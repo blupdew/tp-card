@@ -1,4 +1,64 @@
 /* Solution */
+:root {
+  --spacing: 16px;
+}
+
+.fiches {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.fiche {
+  background-color: aliceblue;
+  border-radius: 16px;
+  padding: var(--spacing);
+  position: relative;
+  .actions {
+    position: absolute; /* Bah... */
+    top: var(--spacing);
+    right: var(--spacing);
+  }
+  .nom {
+    margin: 1rem 0;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .fiches {
+    max-width: 800px;
+    margin: auto;
+    gap: 24px;
+  }
+  .fiche {
+    display: grid;
+    grid-template-areas:
+      "avatar nom actions"
+      "avatar job actions";
+    grid-template-columns: 100px 1fr 3rem;
+    gap: var(--spacing);
+    .nom {
+      margin: 0;
+    }
+    .avatar {
+      grid-area: avatar;
+    }
+    .nom {
+      grid-area: nom;
+    }
+    .job {
+      grid-area: job;
+    }
+    .actions {
+      grid-area: actions;
+      position: static;
+      display: flex;
+      flex-direction: column;
+      button {
+        align-self: end;
+      }
+    }
+  }
+}
 
 /* Reset */
 @layer reset {
